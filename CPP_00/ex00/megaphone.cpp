@@ -1,8 +1,8 @@
-#include <cstring>
+#include <cctype>
 #include <iostream>
 
 void yell(const std::string& input) {
-    for (int i = 0; input[i]; i++)
+    for (size_t i = 0; i < input.size(); i++)
         std::cout << static_cast<char>(std::toupper(input[i]));
 }
 
