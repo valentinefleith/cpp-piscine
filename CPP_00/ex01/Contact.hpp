@@ -14,6 +14,8 @@ class Contact {
     std::string get_nickname() const;
     std::string get_phone_nb() const;
     std::string get_darkest_secret() const;
+    bool operator==(const Contact& other) const;
+    bool operator!=(const Contact& other) const;
 
    private:
     const std::string firstname;

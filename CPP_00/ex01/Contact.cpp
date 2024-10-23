@@ -30,3 +30,15 @@ std::string Contact::get_phone_nb() const {
 std::string Contact::get_darkest_secret() const {
     return darkest_secret;
 }
+
+bool Contact::operator==(const Contact& other) const {
+    return (firstname == other.firstname) && (lastname == other.lastname) &&
+           (nickname == other.nickname) && (phone_nb == other.phone_nb) &&
+           (darkest_secret == other.darkest_secret);
+}
+
+bool Contact::operator!=(const Contact& other) const {
+    return (firstname != other.firstname) || (lastname != other.lastname) ||
+           (nickname != other.nickname) || (phone_nb != other.phone_nb) ||
+           (darkest_secret != other.darkest_secret);
+}
