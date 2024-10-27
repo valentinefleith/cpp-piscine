@@ -1,9 +1,9 @@
 NAME = phonebook
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 .PHONY: all
@@ -11,10 +11,10 @@ all: $(NAME)
 
 %.o: %.cpp
 	@echo Compiling $<
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@$(CC) $(CXXFLAGS) -o $(NAME) $(OBJS)
 	@echo "phonebook ready."
 
 .PHONY: clean

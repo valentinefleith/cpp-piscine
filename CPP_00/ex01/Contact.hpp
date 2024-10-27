@@ -4,11 +4,10 @@
 
 class Contact {
    public:
-    Contact(const std::string& firstname,
-            const std::string& lastname,
-            const std::string& nickname,
-            const std::string& phone_nb,
-            const std::string& darkest_secret);
+    Contact();
+    //static Contact from_user();
+    //bool is_valid() const;
+    //void display() const;
     std::string get_firstname() const;
     std::string get_lastname() const;
     std::string get_nickname() const;
@@ -18,6 +17,11 @@ class Contact {
     bool operator!=(const Contact& other) const;
 
    private:
+    Contact(const std::string& firstname,
+            const std::string& lastname,
+            const std::string& nickname,
+            const std::string& phone_nb,
+            const std::string& darkest_secret);
     const std::string firstname;
     const std::string lastname;
     const std::string nickname;

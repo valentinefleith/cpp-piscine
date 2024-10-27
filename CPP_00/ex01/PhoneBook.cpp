@@ -1,10 +1,10 @@
 #include "PhoneBook.hpp"
 
-//PhoneBook::PhoneBook() {
-//     for (int i = 0; i < CONTACT_NB; i++) {
-//        contacts[i] = create_null_contact();
-//    }
-//}
+PhoneBook::PhoneBook() {
+     for (int i = 0; i < CONTACT_NB; i++) {
+        contacts[i] = create_null_contact();
+    }
+}
 
 int PhoneBook::get_contact_index(const Contact contact) {
     for (int i = 0; i < 8; i++) {

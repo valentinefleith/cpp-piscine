@@ -1,5 +1,12 @@
 #include "PhoneBook.hpp"
 
+Contact::Contact()
+    : firstname(""),
+      lastname(""),
+      nickname(""),
+      phone_nb(""),
+      darkest_secret("") {}
+
 Contact::Contact(const std::string& firstname,
                  const std::string& lastname,
                  const std::string& nickname,
@@ -38,7 +45,5 @@ bool Contact::operator==(const Contact& other) const {
 }
 
 bool Contact::operator!=(const Contact& other) const {
-    return (firstname != other.firstname) || (lastname != other.lastname) ||
-           (nickname != other.nickname) || (phone_nb != other.phone_nb) ||
-           (darkest_secret != other.darkest_secret);
+    return !(*this == other);
 }
