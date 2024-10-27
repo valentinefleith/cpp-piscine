@@ -18,24 +18,36 @@ Contact::Contact(const std::string& firstname,
       phone_nb(phone_nb),
       darkest_secret(darkest_secret) {}
 
-std::string Contact::get_firstname() const {
-    return firstname;
+Contact Contact::from_user() {
+    std::cout << "firstname: " << std::endl;
+    std::string firstname;
+    std::getline(std::cin, firstname);
+    std::cout << "lastname: " << std::endl;
+    std::string lastname;
+    std::getline(std::cin, lastname);
+    std::cout << "nickname: " << std::endl;
+    std::string nickname;
+    std::getline(std::cin, nickname);
+    std::cout << "phone nb: " << std::endl;
+    std::string phone_nb;
+    std::getline(std::cin, phone_nb);
+    std::cout << "darkest secret: " << std::endl;
+    std::string darkest_secret;
+    std::getline(std::cin, darkest_secret);
+    return Contact(firstname, lastname, nickname, phone_nb, darkest_secret);
 }
 
-std::string Contact::get_lastname() const {
-    return lastname;
+bool Contact::is_valid() const {
+    return !(firstname.empty() || lastname.empty() || nickname.empty() ||
+             phone_nb.empty() || darkest_secret.empty());
 }
 
-std::string Contact::get_nickname() const {
-    return nickname;
-}
-
-std::string Contact::get_phone_nb() const {
-    return phone_nb;
-}
-
-std::string Contact::get_darkest_secret() const {
-    return darkest_secret;
+void Contact::display() const {
+    std::cout << "firstname: " << firstname << std::endl;
+    std::cout << "lastname: " << lastname << std::endl;
+    std::cout << "nickname: " << nickname << std::endl;
+    std::cout << "phone nb: " << phone_nb << std::endl;
+    std::cout << "darkest secret: " << darkest_secret << std::endl;
 }
 
 bool Contact::operator==(const Contact& other) const {
