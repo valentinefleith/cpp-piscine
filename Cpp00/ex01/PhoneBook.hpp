@@ -1,5 +1,6 @@
 #ifndef PHONEBOOK_H
 #define PHONEBOOK_H
+#include <stdlib.h>
 #include <cstring>
 #include <iostream>
 #include <string>

@@ -22,30 +22,42 @@ void PhoneBook::process_command(Command command) {
         return this->add(Contact::from_user());
     if (command == SEARCH)
         return this->search();
-    else {
-        std::cout << "Please type a valid command" << std::endl;
-    }
+    std::cout << "Please type a valid command" << std::endl;
 }
 
 void PhoneBook::add(const Contact& to_add) {
     if (!to_add.is_valid()) {
-        std::cout << "Contact can't have empty field." << std::endl;
+        std::cout << "Contact can't have empty fields." << std::endl;
         return;
     }
     contacts[len % CONTACT_NB] = to_add;
     len++;
 }
 
+static bool is_only_digits(std::string str) {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!std::isdigit(str[i]))
+            return false;
+    }
+    return true;
+}
+
 void PhoneBook::search() const {
     if (len == 0) {
-        std::cout << "PhoneBook is empty yet. You need to fill it!" << std::endl;
+        std::cout << "PhoneBook is empty yet. You need to fill it!"
+                  << std::endl;
         return;
     }
     this->display_saved_contacts();
-    int index;
+    std::string index_str;
     std::cout << "Type the index of the contact you want to display:"
               << std::endl;
-    std::cin >> index;
+    getline(std::cin, index_str);
+    if (!is_only_digits(index_str)) {
+        std::cout << "Incorrect index format." << std::endl;
+        return;
+    }
+    int index = std::atoi(index_str.c_str());
     if (index >= len) {
         std::cout << "Index out of range." << std::endl;
         return;
