@@ -5,7 +5,6 @@ PhoneBook::PhoneBook() {
 }
 
 Command PhoneBook::prompt_user() {
-    std::cout << "Welcome to your PhoneBook!" << std::endl;
     std::cout << "Type a command: ADD, SEARCH or EXIT" << std::endl;
     std::string command;
     std::getline(std::cin, command);
@@ -34,16 +33,24 @@ void PhoneBook::add(const Contact& to_add) {
 }
 
 void PhoneBook::search() const {
+    if (len == 0) {
+        std::cout << "PhoneBook is empty yet. You need to fill it!" << std::endl;
+        return;
+    }
     this->display_saved_contacts();
     int index;
     std::cout << "Type the index of the contact you want to display:"
               << std::endl;
     std::cin >> index;
+    if (index >= len) {
+        std::cout << "Index out of range." << std::endl;
+        return;
+    }
     contacts[index].display();
 }
 
 void PhoneBook::display_saved_contacts() const {
-    for (int i = 0; i < CONTACT_NB; i++) {
+    for (int i = 0; i < len % CONTACT_NB; i++) {
         std::cout << i << "|";
         contacts[i].display_truncated();
         std::cout << std::endl;
