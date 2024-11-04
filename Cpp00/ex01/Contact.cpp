@@ -51,18 +51,16 @@ void Contact::display() const {
     std::cout << "darkest secret: " << darkest_secret << std::endl;
 }
 
-
-static std::string truncate(std::string to_truncate) {
-    if (to_truncate.length() <= MAX_WIDTH)
+static std::string truncate(std::string to_truncate, int width) {
+    if (to_truncate.length() <= width)
         return to_truncate;
-    return to_truncate.substr(0, MAX_WIDTH - 1) + ".";
+    return to_truncate.substr(0, width - 1) + ".";
 }
 
-
 void Contact::display_truncated() const {
-    std::cout << truncate(firstname) << "|";
-    std::cout << truncate(lastname) << "|";
-    std::cout << truncate(nickname);
+    std::cout << truncate(firstname, MAX_WIDTH) << "|";
+    std::cout << truncate(lastname, MAX_WIDTH) << "|";
+    std::cout << truncate(nickname, MAX_WIDTH);
 }
 
 bool Contact::operator==(const Contact& other) const {
@@ -74,4 +72,3 @@ bool Contact::operator==(const Contact& other) const {
 bool Contact::operator!=(const Contact& other) const {
     return !(*this == other);
 }
-
