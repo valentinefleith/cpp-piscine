@@ -25,6 +25,7 @@ class Contact {
     std::string nickname;
     std::string phone_nb;
     std::string darkest_secret;
+    std::string truncate(std::string to_truncate) const;
 };
 
 #endif

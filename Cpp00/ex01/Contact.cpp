@@ -1,3 +1,4 @@
+#include "Contact.hpp"
 #include "PhoneBook.hpp"
 
 Contact::Contact()
@@ -51,30 +52,15 @@ void Contact::display() const {
 }
 
 void Contact::display_truncated() const {
-    if (firstname.length() <= MAX_WIDTH) {
-        std::cout << firstname << "|";
-    } else {
-        for (int i = 0; i < MAX_WIDTH - 1; i++) {
-            std::cout << firstname[i];
-        }
-        std::cout << ".|";
-    }
-    if (lastname.length() <= MAX_WIDTH) {
-        std::cout << lastname << "|";
-    } else {
-        for (int i = 0; i < MAX_WIDTH - 1; i++) {
-            std::cout << lastname[i];
-        }
-        std::cout << ".|";
-    }
-    if (nickname.length() <= MAX_WIDTH) {
-        std::cout << nickname << "|";
-    } else {
-        for (int i = 0; i < MAX_WIDTH - 1; i++) {
-            std::cout << nickname[i];
-        }
-        std::cout << ".|";
-    }
+    std::cout << truncate(firstname) << "|";
+    std::cout << truncate(lastname) << "|";
+    std::cout << truncate(nickname);
+}
+
+std::string Contact::truncate(std::string to_truncate) const {
+    if (to_truncate.length() <= MAX_WIDTH)
+        return to_truncate;
+    return to_truncate.substr(0, MAX_WIDTH - 1) + ".";
 }
 
 bool Contact::operator==(const Contact& other) const {
