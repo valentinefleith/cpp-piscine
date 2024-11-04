@@ -20,19 +20,19 @@ Contact::Contact(const std::string& firstname,
       darkest_secret(darkest_secret) {}
 
 Contact Contact::from_user() {
-    std::cout << "firstname: " << std::endl;
+    std::cout << "\033[0;35mfirstname: \033[0m";
     std::string firstname;
     std::getline(std::cin, firstname);
-    std::cout << "lastname: " << std::endl;
+    std::cout << "\033[0;35mlastname: \033[0m";
     std::string lastname;
     std::getline(std::cin, lastname);
-    std::cout << "nickname: " << std::endl;
+    std::cout << "\033[0;35mnickname: \033[0m";
     std::string nickname;
     std::getline(std::cin, nickname);
-    std::cout << "phone nb: " << std::endl;
+    std::cout << "\033[0;35mphone nb: \033[0m";
     std::string phone_nb;
     std::getline(std::cin, phone_nb);
-    std::cout << "darkest secret: " << std::endl;
+    std::cout << "\033[0;35mdarkest secret: \033[0m";
     std::string darkest_secret;
     std::getline(std::cin, darkest_secret);
     return Contact(firstname, lastname, nickname, phone_nb, darkest_secret);
@@ -44,11 +44,12 @@ bool Contact::is_valid() const {
 }
 
 void Contact::display() const {
-    std::cout << "firstname: " << firstname << std::endl;
-    std::cout << "lastname: " << lastname << std::endl;
-    std::cout << "nickname: " << nickname << std::endl;
-    std::cout << "phone nb: " << phone_nb << std::endl;
-    std::cout << "darkest secret: " << darkest_secret << std::endl;
+    std::cout << "\033[0;35mfirstname: \033[0m" << firstname << std::endl;
+    std::cout << "\033[0;35mlastname: \033[0m" << lastname << std::endl;
+    std::cout << "\033[0;35mnickname: \033[0m" << nickname << std::endl;
+    std::cout << "\033[0;35mphone nb: \033[0m" << phone_nb << std::endl;
+    std::cout << "\033[0;35mdarkest secret: \033[0m" << darkest_secret
+              << std::endl;
 }
 
 static std::string truncate(std::string to_truncate, size_t width) {

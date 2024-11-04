@@ -5,7 +5,8 @@ PhoneBook::PhoneBook() {
 }
 
 Command PhoneBook::prompt_user() {
-    std::cout << "Type a command: ADD, SEARCH or EXIT" << std::endl;
+    std::cout << "\033[1;34mType a command: ADD, SEARCH or EXIT\033[0m"
+              << std::endl;
     std::string command;
     std::getline(std::cin, command);
     if (command == "ADD")
@@ -27,7 +28,8 @@ void PhoneBook::process_command(Command command) {
 
 void PhoneBook::add(const Contact& to_add) {
     if (!to_add.is_valid()) {
-        std::cout << "Contact can't have empty fields." << std::endl;
+        std::cout << "\033[1;31mContact can't have empty fields.\033[0m"
+                  << std::endl;
         return;
     }
     contacts[len % CONTACT_NB] = to_add;
@@ -44,31 +46,35 @@ static bool is_only_digits(std::string str) {
 
 void PhoneBook::search() const {
     if (len == 0) {
-        std::cout << "PhoneBook is empty yet. You need to fill it!"
-                  << std::endl;
+        std::cout
+            << "\033[1;31mPhoneBook is empty yet. You need to fill it!\033[0m"
+            << std::endl;
         return;
     }
+    std::cout << "List of available contacts:" << std::endl;
     this->display_saved_contacts();
     std::string index_str;
     std::cout << "Type the index of the contact you want to display:"
               << std::endl;
     getline(std::cin, index_str);
     if (!is_only_digits(index_str)) {
-        std::cout << "Incorrect index format." << std::endl;
+        std::cout << "\033[1;31mIncorrect index format.\033[0m" << std::endl;
         return;
     }
     int index = std::atoi(index_str.c_str());
     if (index >= len) {
-        std::cout << "Index out of range." << std::endl;
+        std::cout << "\033[1;31mIndex out of range.\033[0m" << std::endl;
         return;
     }
     contacts[index].display();
 }
 
 void PhoneBook::display_saved_contacts() const {
+    std::cout << "\033[0;32m";
     for (int i = 0; i < len % CONTACT_NB; i++) {
         std::cout << i << "|";
         contacts[i].display_truncated();
         std::cout << std::endl;
     }
+    std::cout << "\033[0m";
 }
