@@ -28,6 +28,10 @@ void PhoneBook::process_command(Command command) {
 }
 
 void PhoneBook::add(const Contact& to_add) {
+    if (!to_add.is_valid()) {
+        std::cout << "Contact can't have empty field." << std::endl;
+        return;
+    }
     contacts[len % CONTACT_NB] = to_add;
     len++;
 }

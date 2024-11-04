@@ -51,7 +51,7 @@ void Contact::display() const {
     std::cout << "darkest secret: " << darkest_secret << std::endl;
 }
 
-static std::string truncate(std::string to_truncate, int width) {
+static std::string truncate(std::string to_truncate, size_t width) {
     if (to_truncate.length() <= width)
         return to_truncate;
     return to_truncate.substr(0, width - 1) + ".";
