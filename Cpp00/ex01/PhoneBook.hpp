@@ -7,17 +7,28 @@
 
 #define CONTACT_NB 8
 
+enum Command {
+    ADD,
+    SEARCH,
+    EXIT,
+    INVALID,
+};
+
 class PhoneBook {
    public:
     PhoneBook();
-    void add_contact(const Contact contact);
-    void print_contact(const Contact contact);
+    static Command prompt_user();
+    void process_command(Command command);
 
    private:
-    const Contact contacts[CONTACT_NB];
+    Contact contacts[CONTACT_NB];
+    int len;
+
+    void add(const Contact& to_add);
+    void search() const;
     int get_contact_index(const Contact contact);
     int get_nb_contact_stored();
-    const Contact create_null_contact();
+    void display_saved_contacts() const;
 };
 
 #endif

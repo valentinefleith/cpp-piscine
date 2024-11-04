@@ -50,6 +50,33 @@ void Contact::display() const {
     std::cout << "darkest secret: " << darkest_secret << std::endl;
 }
 
+void Contact::display_truncated() const {
+    if (firstname.length() <= MAX_WIDTH) {
+        std::cout << firstname << "|";
+    } else {
+        for (int i = 0; i < MAX_WIDTH - 1; i++) {
+            std::cout << firstname[i];
+        }
+        std::cout << ".|";
+    }
+    if (lastname.length() <= MAX_WIDTH) {
+        std::cout << lastname << "|";
+    } else {
+        for (int i = 0; i < MAX_WIDTH - 1; i++) {
+            std::cout << lastname[i];
+        }
+        std::cout << ".|";
+    }
+    if (nickname.length() <= MAX_WIDTH) {
+        std::cout << nickname << "|";
+    } else {
+        for (int i = 0; i < MAX_WIDTH - 1; i++) {
+            std::cout << nickname[i];
+        }
+        std::cout << ".|";
+    }
+}
+
 bool Contact::operator==(const Contact& other) const {
     return (firstname == other.firstname) && (lastname == other.lastname) &&
            (nickname == other.nickname) && (phone_nb == other.phone_nb) &&

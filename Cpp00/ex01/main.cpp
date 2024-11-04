@@ -1,13 +1,13 @@
 #include "PhoneBook.hpp"
 
 int main() {
+    PhoneBook phonebook;
     while (1) {
-        std::cout << "Type a command: ADD, SEARCH or EXIT" << std::endl;
-        std::string command;
-        std::getline(std::cin, command);
-        if (command == "EXIT")
+        Command command = phonebook.prompt_user();
+        if (command == EXIT) {
             break;
-        std::cout << "You entered: " << command << std::endl;
+        }
+        phonebook.process_command(command);
     }
     return 0;
 }
