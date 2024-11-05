@@ -71,7 +71,8 @@ void PhoneBook::search() const {
 
 void PhoneBook::display_saved_contacts() const {
     std::cout << "\033[0;32m";
-    for (int i = 0; i < len % CONTACT_NB; i++) {
+    int nb_lines = (len >= CONTACT_NB) ? CONTACT_NB : len;
+    for (int i = 0; i < nb_lines; i++) {
         std::cout << i << "|";
         contacts[i].display_truncated();
         std::cout << std::endl;
