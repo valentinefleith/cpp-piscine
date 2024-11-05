@@ -1,10 +1,10 @@
-NAME = phonebook
+NAME = account
 
 CC = c++
 CXXFLAGS = -Wall -Wextra -std=c++98
-CXXFLAGS += -Werror
+# CXXFLAGS += -Werror
 
-SRCS = main.cpp PhoneBook.cpp Contact.cpp
+SRCS = tests.cpp Account.cpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 .PHONY: all
@@ -16,7 +16,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CXXFLAGS) -o $(NAME) $(OBJS)
-	@echo "phonebook ready."
+	@echo "account ready."
 
 .PHONY: clean
 clean:
